@@ -19,8 +19,9 @@
 *.rar
 
 /.settings/
-*/.svn/
+/.svn/
 /target/
+*/.svn/
 .classpath
 .project
 /log/
