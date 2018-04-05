@@ -3,12 +3,11 @@
  */
 package com.qiju.game.car.ws.handler;
 
-import io.netty.channel.ChannelHandlerContext;
-
 import org.apache.log4j.Logger;
 
-import com.alibaba.fastjson.JSONObject;
 import com.qiju.game.car.ws.proto.MessageBody;
+
+import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author Qintingyin

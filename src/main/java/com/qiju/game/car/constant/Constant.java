@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.qiju.game.car.constant;
 
 /**
@@ -22,7 +19,7 @@ public class Constant {
 	public static final String STAT = "ST";
 	/**指令结果*/
 	public static final String VALUE = "V";
-	
+	public static final String BASE_DIR = Constant.class.getResource("/").getPath();
 	
 	
 	
