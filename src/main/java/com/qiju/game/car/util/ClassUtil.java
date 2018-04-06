@@ -1,18 +1,13 @@
 package com.qiju.game.car.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import com.qiju.game.car.config.ConfigLoader;
-import com.qiju.game.car.config.DataType;
-import com.qiju.game.car.config.bean.ChooseType;
-import com.qiju.game.car.config.loader.ChooseTypeConfigLoader;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 
 public class ClassUtil {
 
@@ -47,6 +42,28 @@ public class ClassUtil {
 		String path = pk.replace('.', '/');
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		URL url = classloader.getResource(path);
+		String filePath = getRootPath(url);
+		//生产环境中是jar文件形式，加这个判断是为了开发环境中可以正常使用
+		if (filePath.endsWith(".jar")) {
+			JarInputStream jarIn = new JarInputStream(new FileInputStream(filePath));
+			try {
+				JarEntry entry = jarIn.getNextJarEntry();
+				List<Class<?>> list = new ArrayList<>();
+				while (null != entry) {
+					String name = entry.getName();
+					if (name.startsWith(path) && name.endsWith(".class")) {
+						String className = name.replace('/', '.');
+						className = className.substring(0, name.length() - 6);
+						list.add(classloader.loadClass(className));
+					}
+					entry = jarIn.getNextJarEntry();
+				}
+				return list;
+			} finally {
+				jarIn.close();
+			}
+		}
+		//开发环境中会用下面的方式获取所有class
 		return getClasses(new File(url.getFile()), pk);
 	}
 
@@ -75,21 +92,19 @@ public class ClassUtil {
 		return classes;
 	}
 
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-		try {
-			for (Class<?> c : getAllAssignedClass(ConfigLoader.class)) {
-				DataType type = c.getAnnotation(DataType.class);
-				if(type!=null){
-					System.out.println(c.getName()+type.type());
-					ConfigLoader loade = (ConfigLoader) c.newInstance();
-					loade.load();
-				}
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	private static String getRootPath(URL url) {
+		String fileUrl = url.getFile();
+		int pos = fileUrl.indexOf('!');
+
+		if (-1 == pos) {
+			return fileUrl;
 		}
+
+		return fileUrl.substring(5, pos);
+	}
+
+	public static void main(String[] args) throws Exception {
+		
 	}
 
 }

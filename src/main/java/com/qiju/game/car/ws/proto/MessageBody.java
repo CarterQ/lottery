@@ -15,6 +15,9 @@ public class MessageBody{
 	public MessageBody(JSONObject ob){
 		this.ob = ob;
 	}
+	public MessageBody(String msg){
+		
+	}
 	public MessageBody(){
 		this.ob = new JSONObject();
 	}

@@ -2,6 +2,15 @@ package com.qiju.game.car.ws.channel;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.BAD_REQUEST;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
+
+import org.apache.log4j.Logger;
+
+import com.alibaba.fastjson.JSONObject;
+import com.qiju.game.car.ws.handler.BaseClientRequestHandler;
+import com.qiju.game.car.ws.handler.HandlerFactory;
+import com.qiju.game.car.ws.proto.MessageBody;
+import com.qiju.game.car.ws.proto.MessageFactory;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -20,15 +29,6 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import io.netty.util.CharsetUtil;
-
-import org.apache.log4j.Logger;
-
-import com.alibaba.fastjson.JSONObject;
-import com.qiju.game.car.constant.Constant;
-import com.qiju.game.car.ws.handler.BaseClientRequestHandler;
-import com.qiju.game.car.ws.handler.HandlerFactory;
-import com.qiju.game.car.ws.proto.MessageBody;
-import com.qiju.game.car.ws.proto.MessageFactory;
 
 /**
  * @author qintingyin 2018年3月19日

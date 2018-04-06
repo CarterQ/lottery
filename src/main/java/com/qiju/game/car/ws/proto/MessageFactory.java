@@ -52,6 +52,4 @@ public class MessageFactory {
 		body.setParam(state);
 		return body.build();
 	}
-	
-	
 }

@@ -1,4 +1,4 @@
-package com.qiju.game.car.config;
+package com.qiju.game.car.config.bean;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -10,6 +10,6 @@ public @interface DataType {
 	Type type() default Type.Base;
 	
 	enum Type{
-		Hot,Base
+		Base,Hot
 	}
 }

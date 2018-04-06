@@ -1,25 +1,26 @@
-/**
- * 
- */
 package com.qiju.game.car;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.IOException;
+
+import com.qiju.game.car.config.ConfigInitializeManager;
 
 /**
  * @author Qintingyin
  *
  * 2018-4-3
  */
-@SpringBootApplication
 public class Application {
 
 	/**
 	 * @param args
+	 * @throws IOException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-		new WebsocketServer().startServer(8888);
+	public static void main(String[] args) throws Exception {
+		ConfigInitializeManager.getInstance();
+        new WebsocketServer().startServer(8888);
 	}
 
 }

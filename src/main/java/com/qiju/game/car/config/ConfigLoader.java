@@ -1,8 +1,8 @@
 package com.qiju.game.car.config;
 
-import org.apache.log4j.Logger;
+import java.io.InputStream;
 
-import com.qiju.game.car.constant.Constant;
+import org.apache.log4j.Logger;
 
 /**
  * @author qintingyin
@@ -10,7 +10,14 @@ import com.qiju.game.car.constant.Constant;
  */
 public abstract class ConfigLoader {
 	protected static final Logger logger = Logger.getLogger(ConfigLoader.class);
-	protected String dir = Constant.BASE_DIR + "config/";
+	protected String dir = "config/";
+	/**
+	 * 配置加载方法，该方法禁止抛出异常，需要对所有可能出现异常的代码进行try/catch
+	 */
 	public abstract void load();
 	public abstract String getName();
+	public InputStream getConfigInputStream(String name){
+		return ConfigLoader.class.getClassLoader().getResourceAsStream(dir+name);
+	}
+	
 }
