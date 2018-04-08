@@ -39,8 +39,8 @@ public class ConfigInitializeManager{
 		} catch (Exception e) {
 			logger.error("error at init ConfigInitializeManager..", e);
 		}
+		//配置更新检测线程,定期读取数据库config表,根据结果判断需要更新的配置并更新
 		new Thread(new Runnable() {
-			
 			@Override
 			public void run() {
 				while(true){
@@ -54,7 +54,11 @@ public class ConfigInitializeManager{
 					if(names.size()>0){
 						dao.resetChanges();
 						for(String key:names){
-							hotMap.get(key).load();
+							try{
+								hotMap.get(key).load();
+							}catch (Exception e) {
+								logger.error("配置["+key+"]热更新出错...", e);
+							}
 						}
 					}
 				}

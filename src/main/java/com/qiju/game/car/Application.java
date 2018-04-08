@@ -1,8 +1,8 @@
 package com.qiju.game.car;
 
-import java.io.IOException;
-
 import com.qiju.game.car.config.ConfigInitializeManager;
+import com.qiju.game.car.core.state.StateFactory;
+import com.qiju.game.car.ws.WebsocketServer;
 
 /**
  * @author Qintingyin
@@ -13,13 +13,11 @@ public class Application {
 
 	/**
 	 * @param args
-	 * @throws IOException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
+	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
 		ConfigInitializeManager.getInstance();
+		StateFactory.startGame();
         new WebsocketServer().startServer(8888);
 	}
 

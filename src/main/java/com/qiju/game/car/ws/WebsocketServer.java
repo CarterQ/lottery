@@ -1,8 +1,4 @@
-package com.qiju.game.car;
-
-import org.apache.log4j.Logger;
-
-import com.qiju.game.car.ws.channel.WebSocketServerHandler;
+package com.qiju.game.car.ws;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.AdaptiveRecvByteBufAllocator;
@@ -17,37 +13,18 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
+import org.apache.log4j.Logger;
+
+import com.qiju.game.car.ws.channel.WebSocketServerHandler;
+
+/**
+ * 
+ * @author Qintingyin
+ *
+ * 2018-4-8
+ */
 public class WebsocketServer {
 	private static final Logger logger = Logger.getLogger(WebsocketServer.class);
-
-	public static void main(String[] args) throws InterruptedException {
-		int port = 8888;
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup workerGroup = new NioEventLoopGroup();
-		try {
-			ServerBootstrap b = new ServerBootstrap();
-			b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
-					.childHandler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						protected void initChannel(SocketChannel ch) throws Exception {
-							ChannelPipeline pipeline = ch.pipeline();
-							pipeline.addLast("http-codec", new HttpServerCodec());
-							pipeline.addLast("aggregator", new HttpObjectAggregator(65536));
-							// pipeline.addLast("http-chunked", new
-							// ChunkedWriteHandler());
-							pipeline.addLast("handler", new WebSocketServerHandler());
-						}
-					});
-			logger.info("Web socket server started at port " + 8888 + '.');
-			Channel ch = b.bind(port).sync().channel();
-
-			ch.closeFuture().sync();
-		} finally {
-			bossGroup.shutdownGracefully();
-			workerGroup.shutdownGracefully();
-		}
-	}
-
 	public void startServer(int port) {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -75,5 +52,4 @@ public class WebsocketServer {
 		}
 
 	}
-
 }

@@ -1,7 +1,7 @@
 package com.qiju.game.car.config.bean;
 
 public class ChooseType {
-	/** 押注区索引(与前端flash一致) **/
+	/** 押注区索引 **/
 	private int id;
 
 	/** 押注类型名称 **/
@@ -53,5 +53,13 @@ public class ChooseType {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+
+		return new StringBuilder().append("[id:").append(id).append(",name:")
+				.append(name).append(",multiple:").append(ratio).append(",ratio:").append(id)
+				.append(",desc:").append(desc).append("]").toString();
 	}
 }
