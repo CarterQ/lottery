@@ -3,9 +3,9 @@
 	<type id="0" name="大保时捷" multiply="40" ratio="2" desc="大保时捷赔率40倍,开奖概率2%"></type>
 	<type id="1" name="小保时捷" multiply="5" ratio="20" desc="小保时捷赔率5倍,开奖概率20%"></type>
 	<type id="2" name="大宝马" multiply="30" ratio="3" desc="大宝马赔率30倍,开奖概率3%"></type>
-	<type id="3" name="小宝马" multiply="5" ratio="20" desc="小宝马赔率30倍,开奖概率20%"></type>
+	<type id="3" name="小宝马" multiply="5" ratio="20" desc="小宝马赔率5倍,开奖概率20%"></type>
 	<type id="4" name="大奔驰" multiply="20" ratio="5" desc="大奔驰赔率20倍,开奖概率5%"></type>
-	<type id="5" name="小奔驰" multiply="5" ratio="20" desc="大奔驰赔率20倍,开奖概率5%"></type>
+	<type id="5" name="小奔驰" multiply="5" ratio="20" desc="小奔驰赔率5倍,开奖概率20%"></type>
 	<type id="6" name="大大众" multiply="10" ratio="10" desc="大大众赔率10倍,开奖概率10%"></type>
 	<type id="7" name="小大众" multiply="5" ratio="20" desc="小大众赔率5倍,开奖概率20%"></type>
 </types>

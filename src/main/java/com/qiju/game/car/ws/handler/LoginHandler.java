@@ -15,7 +15,9 @@ public class LoginHandler extends BaseClientRequestHandler {
 	@Override
 	public void handleClientRequest(ChannelHandlerContext ctx, MessageBody msg) {
 		logger.info("handleClientRequest:"+msg.toString());
+		
 		ctx.channel().write(MessageFactory.getSuccessMsg(msg.getOP()));
+		
 	}
 
 }

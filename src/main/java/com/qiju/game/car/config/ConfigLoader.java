@@ -3,8 +3,12 @@ package com.qiju.game.car.config;
 import java.io.InputStream;
 
 import org.apache.log4j.Logger;
+import com.qiju.game.car.config.bean.DataType;
+
 
 /**
+ * 配置加载基类,所有配置相关的加载都需要继承该类,并放在com.qiju.game.car.config.loader包下<br>
+ * PS:如果数据需要热更新,加上 {@linkplain DataType} 注释
  * @author qintingyin
  * 2018年3月30日
  */

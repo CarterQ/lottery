@@ -1,5 +1,10 @@
 package com.qiju.game.car.config.bean;
-
+/**
+ * 押注区配置类
+ * @author Qintingyin
+ *
+ * 2018-4-9
+ */
 public class ChooseType {
 	/** 押注区索引 **/
 	private int id;

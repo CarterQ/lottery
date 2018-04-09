@@ -51,7 +51,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	}
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		logger.info("----channelActive-----"+ctx.name());
+		logger.info("----channelActive-----"+ctx);
 		super.channelActive(ctx);
 	}
 	

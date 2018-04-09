@@ -10,7 +10,7 @@ import com.qiju.game.car.constant.CmdConstant;
 import com.qiju.game.car.constant.Constant;
 
 /**
- * 
+ * handler工厂,根据消息类型提供对应handler
  * @author Qintingyin
  *
  * 2018-4-2
