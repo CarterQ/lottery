@@ -18,4 +18,6 @@ public class CmdConstant {
 	public static final String USER_CRASH_MASTER = "UCM";
 	/** 游戏状态 */
 	public static final String GAME_STATE = "GS";
+	/** 玩家退出或者断线 */
+	public static final String USER_LOGOUT = "ULO";
 }

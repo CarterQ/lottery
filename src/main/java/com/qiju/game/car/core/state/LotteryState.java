@@ -20,13 +20,11 @@ import com.qiju.game.car.config.bean.ChooseTypes;
 public class LotteryState extends BaseState {
 	@Override
 	public void init() {
-		logger.info("LotteryState init....");
 	}
 
 	@Override
 	public void run() {
 		init();
-		logger.info("LotteryState start...");
 		int choose = getChooseType();
 		logger.info("开奖结果:"
 				+ ConfigCache.getInstance().getConfig(ChooseTypes.class)

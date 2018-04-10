@@ -18,7 +18,7 @@ import com.qiju.game.car.util.ClassUtil;
 public class ConfigInitializeManager{
 	protected static final Logger logger = Logger.getLogger(ConfigInitializeManager.class);
 	private static ConfigInitializeManager instance = new ConfigInitializeManager();
-	private Map<String, ConfigLoader> hotMap = new HashMap<>();
+	private Map<String, ConfigLoader> hotMap = new HashMap<String, ConfigLoader>();
 	public static ConfigInitializeManager getInstance(){
 		return instance;
 	}
@@ -45,7 +45,7 @@ public class ConfigInitializeManager{
 			public void run() {
 				while(true){
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(1000*60*5);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

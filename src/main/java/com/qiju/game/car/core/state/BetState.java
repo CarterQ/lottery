@@ -13,13 +13,11 @@ package com.qiju.game.car.core.state;
 public class BetState extends BaseState {
 	@Override
 	public void init() {
-		logger.info("BetState init....");
 	}
 
 	@Override
 	public void run() {
 		init();
-		logger.info("BetState start...");
 		StateFactory.changeState(StateFactory.getLotteryState(), 20);
 	}
 

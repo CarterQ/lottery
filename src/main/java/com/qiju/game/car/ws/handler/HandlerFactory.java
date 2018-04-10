@@ -19,7 +19,8 @@ public class HandlerFactory {
 	private final Map<String, BaseClientRequestHandler> cachedHandlers = new ConcurrentHashMap<String, BaseClientRequestHandler>();
 	private HandlerFactory(){
 		addHandler(CmdConstant.USER_LOGIN,new LoginHandler());
-		addHandler(Constant.ERROR,new LoginHandler());
+		addHandler(Constant.ERROR,new ErrorHandler());
+		addHandler(CmdConstant.USER_LOGOUT, new LogoutHandler());
 	}
 	private static HandlerFactory instance = new HandlerFactory();
 	public static HandlerFactory getInstance(){

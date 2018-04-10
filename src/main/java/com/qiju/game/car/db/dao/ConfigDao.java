@@ -15,10 +15,10 @@ public class ConfigDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 		try {
 			conn = DBManager.getInstance().getConnection();
-			String sql = "SELECT c_name FROM config where c_change >0";
+			String sql = "SELECT c_name FROM config where c_change > 0";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {

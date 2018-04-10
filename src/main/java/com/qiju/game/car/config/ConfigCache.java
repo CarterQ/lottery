@@ -13,7 +13,7 @@ import com.qiju.game.car.config.bean.ChooseTypes;
  * 2018-4-9
  */
 public class ConfigCache {
-	private Map<Class<?>, Object> map = new HashMap<>();
+	private Map<Class<?>, Object> map = new HashMap<Class<?>, Object>();
 	private ConfigCache(){}
 	private static ConfigCache instance = new ConfigCache();
 	public static ConfigCache getInstance(){

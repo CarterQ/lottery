@@ -48,7 +48,7 @@ public class ClassUtil {
 			JarInputStream jarIn = new JarInputStream(new FileInputStream(filePath));
 			try {
 				JarEntry entry = jarIn.getNextJarEntry();
-				List<Class<?>> list = new ArrayList<>();
+				List<Class<?>> list = new ArrayList<Class<?>>();
 				while (null != entry) {
 					String name = entry.getName();
 					if (name.startsWith(path) && name.endsWith(".class")) {
