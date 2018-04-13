@@ -15,9 +15,6 @@ public class MessageBody{
 	public MessageBody(JSONObject ob){
 		this.ob = ob;
 	}
-	public MessageBody(String msg){
-		
-	}
 	public MessageBody(){
 		this.ob = new JSONObject();
 	}
@@ -40,11 +37,12 @@ public class MessageBody{
 		this.ob.put(Constant.STAT, stat);
 	}
 	
-	/**
-	 * @param stat 指令执行状态
-	 */
-	public void setParam(Object value){
-		this.ob.put(Constant.VALUE, value);
+	public String getString(String key){
+		return this.ob.getString(key);
+	}
+	
+	public int getInt(String key){
+		return this.ob.getIntValue(key);
 	}
 	
 	public void put(String key,Object value){

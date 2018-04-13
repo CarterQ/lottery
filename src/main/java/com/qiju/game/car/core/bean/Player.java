@@ -1,9 +1,8 @@
 package com.qiju.game.car.core.bean;
 
-import io.netty.channel.Channel;
 
 /**
- * 
+ * 玩家基础信息
  * @author Qintingyin
  *
  * 2018-4-10
@@ -26,10 +25,11 @@ public class Player {
 	 */
 	private long amount;
 	/**
-	 * 与客户端的连接channel
+	 * 名称
 	 */
-	private Channel connect;
-	public Player(int id,int site){
+	private String name;
+	
+	public Player(long id,int site){
 		this.id = id;
 		this.site = site;
 	}
@@ -58,10 +58,13 @@ public class Player {
 	public void setAmount(long amount) {
 		this.amount = amount;
 	}
-	public Channel getConnect() {
-		return connect;
+
+	public String getName() {
+		return name;
 	}
-	public void setConnect(Channel connect) {
-		this.connect = connect;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+	
 }

@@ -6,8 +6,7 @@ package com.qiju.game.car.ws.handler;
 import org.apache.log4j.Logger;
 
 import com.qiju.game.car.ws.proto.MessageBody;
-
-import io.netty.channel.ChannelHandlerContext;
+import com.qiju.game.car.ws.session.IoSession;
 
 /**
  * @author Qintingyin
@@ -16,5 +15,10 @@ import io.netty.channel.ChannelHandlerContext;
  */
 public abstract class BaseClientRequestHandler {
 	protected static final Logger logger = Logger.getLogger(BaseClientRequestHandler.class);
-	public abstract void handleClientRequest(ChannelHandlerContext ctx, MessageBody msg);
+	/**
+	 * 玩家操作类handler重写并实现该方法
+	 * @param session
+	 * @param msg
+	 */
+	public abstract void handleClientRequest(IoSession session, MessageBody msg);
 }

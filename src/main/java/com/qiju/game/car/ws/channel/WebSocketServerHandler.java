@@ -25,12 +25,12 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qiju.game.car.constant.CmdConstant;
-import com.qiju.game.car.constant.Constant;
-import com.qiju.game.car.core.manager.ManagerFactory;
 import com.qiju.game.car.ws.handler.BaseClientRequestHandler;
 import com.qiju.game.car.ws.handler.HandlerFactory;
 import com.qiju.game.car.ws.proto.MessageBody;
 import com.qiju.game.car.ws.proto.MessageFactory;
+import com.qiju.game.car.ws.session.IoSession;
+import com.qiju.game.car.ws.session.Session;
 
 /**
  * @author qintingyin 2018年3月19日
@@ -56,6 +56,8 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+		Session session = new Session(ctx.channel());
+		ChennelUtil.addChannelSession(ctx.channel(), session);
 		super.channelActive(ctx);
 	}
 
@@ -121,20 +123,18 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 			logger.error("命令格式错误:" + request, e);
 		}
 		if (body != null) {
-			if (!CmdConstant.USER_LOGIN.equals(body.getOP())
-					&& ManagerFactory.getPlayerManager().hasLogin(
-							ctx.channel().id().asShortText())) {
-				HandlerFactory.getInstance().findHandler(Constant.ERROR)
-						.handleClientRequest(ctx, body);
+			IoSession session = ChennelUtil.getSessionBy(ctx.channel());
+			System.out.println(session.getConnect().id().asShortText());
+			//玩家未登录,则强行执行登录操作
+			if (!session.hasLogin()) {
+				HandlerFactory.getInstance()
+						.findHandler(CmdConstant.USER_LOGIN)
+						.handleClientRequest(session, body);
 				return;
 			}
 			BaseClientRequestHandler handler = HandlerFactory.getInstance()
 					.findHandler(body.getOP());
-			handler.handleClientRequest(ctx, body);
-//			ctx.channel().write(
-//					new TextWebSocketFrame(request
-//							+ " , 欢迎使用Netty WebSocket服务，现在时刻："
-//							+ new java.util.Date().toString()));
+			handler.handleClientRequest(session, body);
 		}
 	}
 
@@ -166,7 +166,9 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	@Override
 	public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
 		logger.debug(ctx.channel().id().asLongText() + "断开连接...");
-		HandlerFactory.getInstance().findHandler(CmdConstant.USER_LOGOUT).handleClientRequest(ctx, null);
+		IoSession session = ChennelUtil.getSessionBy(ctx.channel());
+		HandlerFactory.getInstance().findHandler(CmdConstant.USER_LOGOUT)
+				.handleClientRequest(session, null);
 		super.channelUnregistered(ctx);
 	}
 }
