@@ -3,7 +3,6 @@ package com.qiju.game.car.db.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +25,8 @@ public class ConfigDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (ps != null) {
-					ps.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			DBManager.close(conn, ps, rs);
 		}
 		return list;
 	}
@@ -56,16 +42,7 @@ public class ConfigDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			DBManager.close(conn, ps, null);
 		}
 	}
 	
