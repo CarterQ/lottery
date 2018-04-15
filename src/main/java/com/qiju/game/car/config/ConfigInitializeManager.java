@@ -44,11 +44,6 @@ public class ConfigInitializeManager{
 			@Override
 			public void run() {
 				while(true){
-					try {
-						Thread.sleep(1000*60*5);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 					ConfigDao dao = new ConfigDao();
 					List<String> names = dao.queryAllChanges();
 					if(names.size()>0){
@@ -60,6 +55,11 @@ public class ConfigInitializeManager{
 								logger.error("配置["+key+"]热更新出错...", e);
 							}
 						}
+					}
+					try {
+						Thread.sleep(1000*60*5);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
 				}
 			}
