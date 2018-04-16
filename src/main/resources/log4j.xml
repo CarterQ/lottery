@@ -7,7 +7,7 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<!-- 设置日志输出的格式 -->
 			<param name="ConversionPattern"
-				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l]%m%n" />
+				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [ method:%l]%m%n" />
 		</layout>
 		<!--过滤器设置输出的级别 -->
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -39,7 +39,7 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<!-- 设置日志输出的格式 -->
 			<param name="ConversionPattern"
-				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l] %m%n" />
+				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [%l] %m%n" />
 		</layout>
 	</appender>
 	<appender name="handler" class="org.apache.log4j.DailyRollingFileAppender">
@@ -51,13 +51,13 @@
 		<layout class="org.apache.log4j.PatternLayout">
 			<!-- 设置日志输出的格式 -->
 			<param name="ConversionPattern"
-				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l] %m%n" />
+				value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [%l] %m%n" />
 		</layout>
 	</appender>
 
 	<!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制 -->
 	<logger name="com.qiju.game.car" additivity="true">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="server" />
 	</logger>
 	<logger name="com.qiju.game.car.ws.handler" additivity="true">

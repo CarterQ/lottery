@@ -35,5 +35,12 @@ public class SessionManager {
 		map.put(player.getId(), session);
 	}
 	
+	/**
+	 * 用户退出,连接断开,连接异常时调用
+	 * @param session
+	 */
+	public void playerLogout(IoSession session){
+		map.remove(session);
+	}
 	
 }

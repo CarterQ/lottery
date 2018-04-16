@@ -15,7 +15,7 @@ public class LogoutHandler extends BaseClientRequestHandler {
 	@Override
 	public void handleClientRequest(IoSession session, MessageBody msg) {
 		if(msg==null){
-			//玩家断线
+			
 		}
 		
 	}

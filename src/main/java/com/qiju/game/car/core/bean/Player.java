@@ -29,6 +29,7 @@ public class Player {
 	 */
 	private String name;
 	
+	
 	public Player(long id,int site){
 		this.id = id;
 		this.site = site;

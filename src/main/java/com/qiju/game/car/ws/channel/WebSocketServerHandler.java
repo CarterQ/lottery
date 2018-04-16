@@ -159,7 +159,10 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
-		cause.printStackTrace();
+		IoSession session = ChennelUtil.getSessionBy(ctx.channel());
+		HandlerFactory.getInstance().findHandler(CmdConstant.USER_LOGOUT)
+				.handleClientRequest(session, null);
+		logger.error(ctx.channel().id().asLongText() + "断开连接...",cause);
 		ctx.close();
 	}
 
