@@ -1,5 +1,6 @@
 package com.qiju.game.car.ws.session;
 
+import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.qiju.game.car.core.bean.Player;
@@ -43,4 +44,11 @@ public class SessionManager {
 		map.remove(session);
 	}
 	
+	/**
+	 * 以迭代器方式获取所有session
+	 * @return
+	 */
+	public Iterator<IoSession> getAllSession(){
+		return map.values().iterator();
+	}
 }
