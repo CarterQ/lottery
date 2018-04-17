@@ -14,8 +14,6 @@ public class CmdConstant {
 	public static final String USER_REQ_MASTER = "URM";
 	/**玩家取消上庄申请*/
 	public static final String USER_QUIT_MASTER = "UQM";
-	/**玩家插庄*/
-	public static final String USER_CRASH_MASTER = "UCM";
 	/** 游戏状态 */
 	public static final String GAME_STATE = "GS";
 	/** 玩家退出或者断线 */

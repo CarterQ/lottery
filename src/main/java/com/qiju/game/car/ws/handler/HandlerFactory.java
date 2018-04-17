@@ -21,6 +21,9 @@ public class HandlerFactory {
 		addHandler(CmdConstant.USER_LOGIN,new LoginHandler());
 		addHandler(Constant.ERROR,new ErrorHandler());
 		addHandler(CmdConstant.USER_LOGOUT, new LogoutHandler());
+		addHandler(CmdConstant.USER_BET, new BetHandler());
+		addHandler(CmdConstant.USER_REQ_MASTER, new UpMasterHandler());
+		addHandler(CmdConstant.USER_QUIT_MASTER, new QuitMasterHandler());
 	}
 	private static HandlerFactory instance = new HandlerFactory();
 	public static HandlerFactory getInstance(){

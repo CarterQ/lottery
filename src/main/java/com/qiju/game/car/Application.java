@@ -16,9 +16,10 @@ public class Application {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
+		System.out.println(Application.class.getResource("log4j.xml").getPath());
 		ConfigInitializeManager.getInstance();
-		StateFactory.startGame();
-        new WebsocketServer().startServer(8888);
+//		StateFactory.startGame();
+//        new WebsocketServer().startServer(8888);
 	}
 
 }

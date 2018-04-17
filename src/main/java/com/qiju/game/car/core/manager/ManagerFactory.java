@@ -1,6 +1,5 @@
 package com.qiju.game.car.core.manager;
 
-import com.qiju.game.car.core.bean.Beter;
 import com.qiju.game.car.db.DBManager;
 import com.qiju.game.car.ws.session.SessionManager;
 
