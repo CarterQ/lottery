@@ -57,7 +57,7 @@
 
 	<!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制 -->
 	<logger name="com.qiju.game.car" additivity="true">
-		<level value="INFO" />
+		<level value="ERROR" />
 		<appender-ref ref="server" />
 	</logger>
 	<logger name="com.qiju.game.car.ws.handler" additivity="true">

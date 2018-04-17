@@ -1,8 +1,12 @@
 package com.qiju.game.car.config;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import org.apache.log4j.Logger;
+
 import com.qiju.game.car.config.bean.DataType;
 
 
@@ -15,6 +19,7 @@ import com.qiju.game.car.config.bean.DataType;
 public abstract class ConfigLoader {
 	protected static final Logger logger = Logger.getLogger(ConfigLoader.class);
 	protected String dir = "config/";
+	
 	/**
 	 * 配置加载方法<br> 
 	 * PS:该方法禁止抛出异常，需要对所有可能出现异常的代码进行try/catch
@@ -25,9 +30,10 @@ public abstract class ConfigLoader {
 	 * 获取config目录下的资源
 	 * @param name
 	 * @return
+	 * @throws FileNotFoundException 
 	 */
-	public InputStream getConfigInputStream(String name){
-		return ConfigLoader.class.getClassLoader().getResourceAsStream(dir+name);
+	public InputStream getConfigInputStream(String name) throws FileNotFoundException{
+		return new FileInputStream(new File(ConfigInitializeManager.getBaseDir() +dir+name));
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.qiju.game.car.db;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.qiju.game.car.config.ConfigInitializeManager;
 
 /**
  * 连接池管理，负责连接池初始化，数据库连接的获取
@@ -32,7 +35,8 @@ public class DBManager {
 	public void init() {
 		Properties pr = new Properties();
 		try {
-			pr.load(DBManager.class.getClassLoader().getResourceAsStream("druid.properties"));
+			File file = new File(ConfigInitializeManager.getBaseDir()+"druid.properties");
+			pr.load(new FileInputStream(file));
 			dataSource = DruidDataSourceFactory.createDataSource(pr);
 		} catch (Exception e) {
 			logger.error("error at init dbmanager...", e);
