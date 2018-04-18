@@ -17,6 +17,7 @@ public class PlayerManager {
 	private ConcurrentHashMap<Long, Player> players = new ConcurrentHashMap<Long, Player>();
 	public Player getPlayer(long id){
 		Player player = players.get(id);
+		//TODO:如果实现兑币功能，需要加上player为空时，从数据库中读取操作
 		return player;
 	}
 	
