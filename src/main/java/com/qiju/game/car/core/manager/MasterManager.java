@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
  * @author qintingyin
  */
 public class MasterManager {
-	private static final Logger logger = Logger.getLogger(BetManager.class);
+	private static final Logger logger = Logger.getLogger(MasterManager.class);
 	public long getMaster(){
 		//TODO:获取当前庄,返回玩家ID
 		return 0;

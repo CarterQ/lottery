@@ -61,7 +61,7 @@
 		<appender-ref ref="server" />
 	</logger>
 	<logger name="com.qiju.game.car.ws.handler" additivity="true">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="handler" />
 	</logger>
 

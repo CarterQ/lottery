@@ -15,9 +15,9 @@ import com.qiju.game.car.core.bean.Player;
 public class PlayerManager {
 	private static final Logger logger = Logger.getLogger(PlayerManager.class);
 	private ConcurrentHashMap<Long, Player> players = new ConcurrentHashMap<Long, Player>();
-//	private ConcurrentHashMap<String, Player> playerConns = new ConcurrentHashMap<String, Player>();
 	public Player getPlayer(long id){
-		return null;
+		Player player = players.get(id);
+		return player;
 	}
-
+	
 }

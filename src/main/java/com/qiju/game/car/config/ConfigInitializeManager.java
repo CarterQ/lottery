@@ -57,9 +57,6 @@ public class ConfigInitializeManager {
 			@Override
 			public void run() {
 				while (true) {
-					logger.info("init...info");
-					logger.error("init...error");
-					logger.debug("init...debug");
 					ConfigDao dao = new ConfigDao();
 					List<String> names = dao.queryAllChanges();
 					if (names.size() > 0) {
